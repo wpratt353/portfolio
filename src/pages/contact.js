@@ -16,7 +16,7 @@ const ContactPage = ({ data }, location) => {
 
       <article className="post-content page-template no-image">
         <div className="post-content-body">
-          <form method="post" action="#">
+          <form method="post" action="POST" netlify>
             <div className="row gtr-uniform">
               <div className="col-6 col-12-xsmall">
                 <input
