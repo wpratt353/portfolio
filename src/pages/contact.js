@@ -1,6 +1,5 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import { StaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,7 +7,7 @@ import SEO from "../components/seo"
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
 
-const contactPage = ({ data }, location) => {
+const ContactPage = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
 
   return (
@@ -119,3 +118,22 @@ const contactPage = ({ data }, location) => {
     </Layout>
   )
 }
+
+const indexQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
+
+export default props => (
+  <StaticQuery
+    query={indexQuery}
+    render={data => (
+      <ContactPage location={props.location} data={data} {...props} />
+    )}
+  />
+)
