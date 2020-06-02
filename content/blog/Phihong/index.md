@@ -1,6 +1,6 @@
 ---
 title: Phihong
-date: "2017-01-01"
+date: "2018-01-01"
 thumbnail: ./phihong.png
 description: International Computer and Electrical Power Manufacturer
 ---
