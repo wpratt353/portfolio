@@ -46,7 +46,7 @@ const ContactPage = ({ data }, location) => {
           <form
             name="contact"
             method="post"
-            action="/thanks/"
+            action="thanks"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
@@ -84,50 +84,6 @@ const ContactPage = ({ data }, location) => {
                   <option value={1}>Administration</option>
                   <option value={1}>Human Resources</option>
                 </select>
-              </div>
-              {/* Break */}
-              <div className="col-4 col-12-small">
-                <input
-                  type="radio"
-                  id="form-priority-low"
-                  name="form-priority"
-                  defaultChecked
-                  onChange={handleChange}
-                />
-                <label htmlFor="form-priority-low">Low</label>
-              </div>
-              <div className="col-4 col-12-small">
-                <input
-                  type="radio"
-                  id="form-priority-normal"
-                  name="form-priority"
-                  onChange={handleChange}
-                />
-                <label htmlFor="form-priority-normal">Normal</label>
-              </div>
-              <div className="col-4 col-12-small">
-                <input
-                  type="radio"
-                  id="form-priority-high"
-                  name="form-priority"
-                  onChange={handleChange}
-                />
-                <label htmlFor="form-priority-high">High</label>
-              </div>
-              {/* Break */}
-              <div className="col-6 col-12-small">
-                <input type="checkbox" id="form-copy" name="form-copy" />
-                <label htmlFor="form-copy">Email me a copy</label>
-              </div>
-              <div className="col-6 col-12-small">
-                <input
-                  type="checkbox"
-                  id="form-human"
-                  name="form-human"
-                  defaultChecked
-                  onChange={handleChange}
-                />
-                <label htmlFor="form-human">I am a human</label>
               </div>
               {/* Break */}
               <div className="col-12">

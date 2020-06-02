@@ -12,8 +12,12 @@ class NotFoundPage extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Form Submission Thanks" />
-        <h1>Thank You!</h1>
-        <p>Your request has been submitted.</p>
+        <article className="post-content page-template no-image">
+          <div className="post-content-body">
+            <h1>Thank You!</h1>
+            <h2>Your request has been submitted.</h2>
+          </div>
+        </article>
       </Layout>
     )
   }
