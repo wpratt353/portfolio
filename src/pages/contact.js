@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
+import { navigate, graphql, StaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -7,8 +7,35 @@ import SEO from "../components/seo"
 import "../utils/normalize.css"
 import "../utils/css/screen.css"
 
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
+
 const ContactPage = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
+
+  const [state, setState] = React.useState({})
+
+  const handleChange = e => {
+    setState({ ...state, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    const form = e.target
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...state,
+      }),
+    })
+      .then(() => navigate(form.getAttribute("action")))
+      .catch(error => alert(error))
+  }
 
   return (
     <Layout title={siteTitle}>
@@ -16,28 +43,41 @@ const ContactPage = ({ data }, location) => {
 
       <article className="post-content page-template no-image">
         <div className="post-content-body">
-          <form method="post" action="#" data-netlify="true" name="contact">
+          <form
+            name="contact"
+            method="post"
+            action="/thanks/"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+          >
             <input type="hidden" name="form-name" value="contact" />
             <div className="row gtr-uniform">
               <div className="col-6 col-12-xsmall">
                 <input
                   type="text"
-                  name="name"
-                  id="demo-name"
+                  name="form-name"
+                  id="form-name"
                   placeholder="Name"
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-6 col-12-xsmall">
                 <input
                   type="email"
-                  name="email"
-                  id="demo-email"
+                  name="form-email"
+                  id="form-email"
                   placeholder="Email"
+                  onChange={handleChange}
                 />
               </div>
               {/* Break */}
               <div className="col-12">
-                <select name="demo-category" id="demo-category">
+                <select
+                  name="form-category"
+                  id="form-category"
+                  onChange={handleChange}
+                >
                   <option value>- Category -</option>
                   <option value={1}>Manufacturing</option>
                   <option value={1}>Shipping</option>
@@ -49,42 +89,55 @@ const ContactPage = ({ data }, location) => {
               <div className="col-4 col-12-small">
                 <input
                   type="radio"
-                  id="demo-priority-low"
-                  name="priority"
+                  id="form-priority-low"
+                  name="form-priority"
                   defaultChecked
+                  onChange={handleChange}
                 />
-                <label htmlFor="demo-priority-low">Low</label>
+                <label htmlFor="form-priority-low">Low</label>
               </div>
               <div className="col-4 col-12-small">
-                <input type="radio" id="demo-priority-normal" name="priority" />
-                <label htmlFor="demo-priority-normal">Normal</label>
+                <input
+                  type="radio"
+                  id="form-priority-normal"
+                  name="form-priority"
+                  onChange={handleChange}
+                />
+                <label htmlFor="form-priority-normal">Normal</label>
               </div>
               <div className="col-4 col-12-small">
-                <input type="radio" id="demo-priority-high" name="priority" />
-                <label htmlFor="demo-priority-high">High</label>
+                <input
+                  type="radio"
+                  id="form-priority-high"
+                  name="form-priority"
+                  onChange={handleChange}
+                />
+                <label htmlFor="form-priority-high">High</label>
               </div>
               {/* Break */}
               <div className="col-6 col-12-small">
-                <input type="checkbox" id="demo-copy" name="demo-copy" />
-                <label htmlFor="demo-copy">Email me a copy</label>
+                <input type="checkbox" id="form-copy" name="form-copy" />
+                <label htmlFor="form-copy">Email me a copy</label>
               </div>
               <div className="col-6 col-12-small">
                 <input
                   type="checkbox"
-                  id="demo-human"
-                  name="human"
+                  id="form-human"
+                  name="form-human"
                   defaultChecked
+                  onChange={handleChange}
                 />
-                <label htmlFor="demo-human">I am a human</label>
+                <label htmlFor="form-human">I am a human</label>
               </div>
               {/* Break */}
               <div className="col-12">
                 <textarea
-                  name="message"
-                  id="demo-message"
+                  name="form-message"
+                  id="form-message"
                   placeholder="Enter your message"
                   rows={6}
                   defaultValue={""}
+                  onChange={handleChange}
                 />
               </div>
               {/* Break */}
@@ -95,6 +148,7 @@ const ContactPage = ({ data }, location) => {
                       type="submit"
                       defaultValue="Send Message"
                       className="primary"
+                      onChange={handleChange}
                     />
                   </li>
                   <li>
