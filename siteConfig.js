@@ -2,7 +2,8 @@ module.exports = {
   name: "Will Pratt Portfolio",
   shortName: "WPP",
   description: "Building beautiful brands",
-  url: "https://gatsby-lam.vaporwavy.io", // Domain of your site without prefix!
+  url: "https://naughty-easley-e2dfc0.netlify.app/", // Domain of your site without prefix!
   prefix: "/",
   author: "Will Pratt",
+  location: "Florida",
 }

@@ -2,6 +2,7 @@
 title: Bellybands
 date: "2018-08-15"
 tags: [Bellybands, portfolio, ecommerce, WooCommerce]
+thumbnail: ./bellybands.png
 description: E-commerce site providing dog housebreaking products.
 ---
 
