@@ -5,5 +5,5 @@ module.exports = {
   url: "https://naughty-easley-e2dfc0.netlify.app/", // Domain of your site without prefix!
   prefix: "/",
   author: "Will Pratt",
-  location: "Florida",
+  locale: "Florida",
 }

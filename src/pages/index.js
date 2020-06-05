@@ -26,6 +26,7 @@ const BlogIndex = ({ data }, location) => {
         <header className="page-head">
           <h2 className="page-head-title">
             {data.site.siteMetadata.description}
+            {data.site.siteMetadata.location}
           </h2>
         </header>
       )}

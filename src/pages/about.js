@@ -24,27 +24,25 @@ const AboutPage = ({ data }, location) => {
             />
             <figcaption>Large imagery is at the heart of this theme</figcaption>
           </figure> */}
-          <h3>Dynamic styles</h3>
+          <h3>Personal Profile</h3>
           <p>
-            London comes with photo-centric main layout best suited to
-            photography, graphics portfolios and other image-heavy uses.
+            Independently motivated team player with strong tech skills aiming
+            to find stable employment in Austin, TX. I want to transition from
+            working mostly solo, and I am interested in being a part of a team
+            in a growing company. Core skills include data management, digital
+            advertising, and web development.
           </p>
-          <p>
-            Both post and page templates are light and minimal, with all the
-            focus on the content while the design of the theme gets out of the
-            way. Beneath the hood, London enjoys the full power of the{" "}
-            <a href="https://docs.ghost.org/api/handlebars-themes/">
-              Ghost Handlebars Theme API
-            </a>{" "}
-            to provide limitless customisation options and dynamic styles.
-          </p>
-          <p>
-            Don't forget to check out the{" "}
-            <a href="https://docs.ghost.org/integrations/">
-              Ghost Integrations Directory
-            </a>{" "}
-            for more ways to integrate Ghost with your favourite services.
-          </p>
+          <h3>Core Competencies</h3>
+          <ul>
+            <li>Frontend web development</li>
+            <li>Copywriting</li>
+            <li>Database management</li>
+            <li>Advertising and social media management</li>
+            <li>Adobe Photoshop</li>
+            <li>MS Office Suite, including Excel</li>
+            <li>HTML5, CSS3, PHP, FTP</li>
+            <li>Familiarity with: Javascript, Jquery, Git repositories</li>
+          </ul>
         </div>
       </article>
     </Layout>
@@ -56,6 +54,7 @@ const indexQuery = graphql`
     site {
       siteMetadata {
         title
+        locale
       }
     }
     benchAccounting: file(
@@ -69,23 +68,6 @@ const indexQuery = graphql`
     }
   }
 `
-
-export default function location(props) {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          site {
-            siteMetadata {
-              location
-            }
-          }
-        }
-      `}
-      render={data => <Header data={data} {...props} />}
-    />
-  )
-}
 
 export default props => (
   <StaticQuery
